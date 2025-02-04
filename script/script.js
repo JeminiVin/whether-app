@@ -3,7 +3,7 @@ const apiKey = "5b34919f5000ccaa471d279e6ea59c85";
 function getWeather() {
   const city = document.getElementById("cityInput").value.trim();
   if (city === "") {
-    displayError("Please enter a city name.");
+    alert("Please enter a city name.");
     return;
   }
 
@@ -17,12 +17,12 @@ function getWeather() {
       const data = JSON.parse(xhr.responseText);
       updateUI(data);
     } else {
-      displayError("City not found. Please try again.");
+      alert("City not found. Please try again.");
     }
   };
 
   xhr.onerror = function () {
-    displayError("Error occur in fetching data. Please check your connection.");
+    alert("Error occur in fetching data. Please check your connection.");
   };
 
   xhr.send();
@@ -67,18 +67,18 @@ function getWeatherByLocation() {
           const data = JSON.parse(xhr.responseText);
           updateUI(data);
         } else {
-          displayError("Could not retrieve location data.");
+          alert("Could not retrieve location data.");
         }
       };
 
       xhr.onerror = function () {
-        displayError("Error fetching location weather.");
+        alert("Error fetching location weather.");
       };
 
       xhr.send();
     });
   } else {
-    displayError("Geolocation is not supported by your browser.");
+    alert("Geolocation is not supported by your browser.");
   }
 }
 window.onload = getWeatherByLocation;
